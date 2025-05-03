@@ -1,0 +1,344 @@
+/* Animation Classes */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.3s;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  animation: fadeIn 1s forwards 0.6s;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s forwards;
+}
+
+.slide-up-delay {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s forwards 0.3s;
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInLeft 0.8s forwards;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideInRight 0.8s forwards;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll Animations */
+[data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-aos="fade-right"] {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+[data-aos="fade-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Service card hover animation */
+.service-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--color-primary-500), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+  border-radius: var(--radius-md);
+}
+
+.service-card:hover:before {
+  opacity: 0.05;
+}
+
+/* Button hover animations */
+.btn-primary, .btn-secondary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:after, .btn-secondary:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover:after, .btn-secondary:hover:after {
+  left: 100%;
+}
+
+/* Gallery Animation */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-caption {
+  position: relative;
+  transform: translateY(0);
+  transition: transform var(--transition-normal);
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(-5px);
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary-500);
+  transform: scaleX(0);
+  transition: transform var(--transition-normal);
+  transform-origin: left;
+}
+
+.gallery-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero Section parallax effect */
+#hero {
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.pexels.com/photos/3807319/pexels-photo-3807319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: 110% 110%;
+  background-position: center;
+  opacity: 0.2;
+  z-index: -1;
+  transform: translateZ(0);
+  animation: heroParallax 20s infinite alternate ease-in-out;
+}
+
+@keyframes heroParallax {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Nav item hover animation */
+.nav-link {
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-700);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary-500);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-normal);
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Feature icon animation */
+.feature-icon {
+  transition: transform var(--transition-normal);
+}
+
+.feature:hover .feature-icon {
+  transform: rotate(15deg) scale(1.2);
+  color: var(--color-accent-600);
+}
+
+/* Testimonials transition animation */
+.testimonial-slide {
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateX(30px);
+}
+
+.testimonial-slide.active {
+  transform: translateX(0);
+}
+
+/* Contact card hover animation */
+.contact-card {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(30, 79, 145, 0.05), transparent 70%);
+  z-index: -1;
+  transform: scale(0);
+  transition: transform var(--transition-slow);
+}
+
+.contact-card:hover::before {
+  transform: scale(1);
+}
+
+.contact-icon {
+  transition: transform var(--transition-normal);
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.2);
+}
+
+/* Form field focus animation */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  transform: translateY(-2px);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Subtle header scroll animation */
+@keyframes headerScroll {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#header.scrolled {
+  animation: headerScroll 0.5s forwards;
+}
